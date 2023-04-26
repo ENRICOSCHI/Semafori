@@ -27,7 +27,7 @@ void *cod_thread(void *arg){ // funzione che viene eseguita dal thread
 		dato = condivisa; // aggiorna la variabile
 		dato++; // copiando prima variabile locale
 		condivisa = dato; // solo per ralentare l'esecuzione
-		printf("."); // semaforo verde 
+		printf(".");  // il punto indica quando l'algoritmo è nel thread 
 		pthread_mutex_unlock(&mutex); // esce dalla sezione critica
 	}
 }
@@ -42,7 +42,7 @@ int main(void) {
 	for(x=0;x<TANTI2; x++){
 		pthread_mutex_lock(&mutex); // entra nella sezione critica
 		condivisa++;
-		printf("o"); //semaforo rosso
+		printf("o"); // la o indica quando l'algoritmo è nel main 
 		pthread_mutex_unlock(&mutex); // esce della sezione critica
 	}
 	if(pthread_join(tid1,NULL)){
